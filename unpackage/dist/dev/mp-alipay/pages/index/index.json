@@ -1,0 +1,6 @@
+{
+  "defaultTitle": "图片裁剪示例",
+  "usingComponents": {
+    "t-cropper": "../../uni_modules/t-cropper/components/t-cropper/t-cropper"
+  }
+}

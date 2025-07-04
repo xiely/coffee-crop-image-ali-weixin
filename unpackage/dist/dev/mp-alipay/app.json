@@ -1,0 +1,13 @@
+{
+  "pages": [
+    "pages/index/index"
+  ],
+  "window": {
+    "defaultTitle": "图片裁剪示例",
+    "titleBarColor": "#FFFFFF",
+    "allowsBounceVertical": "NO",
+    "navigationBarBackgroundColor": "#FFFFFF"
+  },
+  "subPackageBuildType": "shared",
+  "usingComponents": {}
+}

@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","sources":["cGFnZXMvaW5kZXgvaW5kZXgudnVl"],"sourcesContent":["import MiniProgramPage from 'E:/需求相关/BBBBBBBBBBBBBBBBBBBBBBBBBBB/t-cropper_1.0.8_example/pages/index/index.vue'\nmy.createPage(MiniProgramPage)"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AACA,GAAG,WAAW,eAAe;"}

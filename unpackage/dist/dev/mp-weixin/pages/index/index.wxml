@@ -1,0 +1,1 @@
+<view class="data-v-1cf27b2a"><t-cropper wx:if="{{c}}" class="data-v-1cf27b2a" bindcancel="{{a}}" bindconfirm="{{b}}" u-i="1cf27b2a-0" bind:__l="__l" u-p="{{c}}"></t-cropper><button class="button data-v-1cf27b2a" type="primary" bindtap="{{d}}">选择图片</button></view>
