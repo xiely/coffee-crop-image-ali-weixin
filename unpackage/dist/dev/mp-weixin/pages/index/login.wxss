@@ -32,5 +32,5 @@
   height: 200rpx;
 }
 .button.data-v-fa14255b {
-  margin: 0 20rpx;
+  margin: 80rpx 20rpx;
 }

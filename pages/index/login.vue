@@ -4,9 +4,9 @@
     <t-cropper
       mode="ratio"
       :imageUrl="imageUrl"
-      :width="500"
-      :height="500"
-      :radius="0"
+      :maxWidth="600"
+      :maxHeight="600"
+      :radius="300"
       :delay="150"
       @cancel="onCancel"
       @confirm="onConfirm"
@@ -268,6 +268,6 @@ const prviewImgae = (index, url) => {
 }
 
 .button {
-    margin: 0 20rpx;
+    margin: 80rpx 20rpx;
 }
 </style>

@@ -175,9 +175,9 @@ const _sfc_main = {
         c: common_vendor.p({
           mode: "ratio",
           imageUrl: common_vendor.unref(imageUrl),
-          width: 500,
-          height: 500,
-          radius: 0,
+          maxWidth: 600,
+          maxHeight: 600,
+          radius: 300,
           delay: 150
         }),
         d: common_vendor.o(selectFile)
