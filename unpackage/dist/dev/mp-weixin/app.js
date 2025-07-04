@@ -8,13 +8,31 @@ if (!Math) {
 const _sfc_main = {
   onLaunch: function(options) {
     common_vendor.index.__f__("log", "at App.vue:4", "App Launch", options);
-    this.globalData.token = decodeURIComponent(options.query.scene);
+    this.setTokenFromOptions(options);
   },
-  onShow: function() {
-    common_vendor.index.__f__("log", "at App.vue:9", "App Show");
+  onShow: function(options) {
+    common_vendor.index.__f__("log", "at App.vue:8", "App Show", options);
+    this.setTokenFromOptions(options);
   },
   onHide: function() {
     common_vendor.index.__f__("log", "at App.vue:12", "App Hide");
+  },
+  globalData: {
+    token: ""
+  },
+  methods: {
+    setTokenFromOptions(options) {
+      let scene = "";
+      if (options && options.query && options.query.scene) {
+        scene = options.query.scene;
+      } else if (options && options.scene) {
+        scene = options.scene;
+      }
+      if (scene) {
+        this.globalData.token = decodeURIComponent(scene);
+        common_vendor.index.__f__("log", "at App.vue:28", "Token set:", this.globalData.token);
+      }
+    }
   }
 };
 function createApp() {
