@@ -1,1 +1,0 @@
-<view class="data-v-1cf27b2a"><t-cropper class="data-v-1cf27b2a" onCancel="{{a}}" onConfirm="{{b}}" u-i="1cf27b2a-0" onVI="__l" u-p="{{c||''}}"></t-cropper><button class="button data-v-1cf27b2a" type="primary" onTap="{{d}}">选择图片</button></view>

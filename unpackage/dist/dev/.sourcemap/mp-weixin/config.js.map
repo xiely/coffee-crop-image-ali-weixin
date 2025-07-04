@@ -1,0 +1,1 @@
+{"version":3,"file":"config.js","sources":["config.js"],"sourcesContent":["// 应用全局配置\r\nconst config = {\r\n  // #ifdef H5\r\n  baseUrl: \"\",\r\n// #endif\r\n// #ifndef H5\r\n  baseUrl: \"https://coffee.htcbot.com\",\r\n// #endif\r\n};\r\nexport default config;\r\n"],"names":[],"mappings":";AACK,MAAC,SAAS;AAAA,EAKb,SAAS;AAEX;;"}

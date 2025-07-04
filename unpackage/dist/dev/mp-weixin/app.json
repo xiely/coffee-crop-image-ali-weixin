@@ -1,9 +1,9 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/login",
+    "pages/index/confirm"
   ],
   "window": {
-    "navigationBarTitleText": "图片裁剪示例",
     "navigationBarTextStyle": "black",
     "navigationBarBackgroundColor": "#FFFFFF"
   },

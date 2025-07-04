@@ -1,9 +1,9 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/login",
+    "pages/index/confirm"
   ],
   "window": {
-    "defaultTitle": "图片裁剪示例",
     "titleBarColor": "#FFFFFF",
     "allowsBounceVertical": "NO",
     "navigationBarBackgroundColor": "#FFFFFF"
