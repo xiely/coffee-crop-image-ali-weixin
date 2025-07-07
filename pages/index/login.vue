@@ -20,7 +20,9 @@
         :src="item.url"
       />
     </view> -->
-    <button  class="button" type="primary" @click="selectFile">选择图片</button>
+    <button class="button" type="primary" @click="selectFile">选择图片</button>
+
+     <!-- <button class="button" type="primary" @click="goto">测试</button> -->
   </view>
 </template>
 
@@ -49,28 +51,32 @@ onBeforeMount(async () => {
     await getOrderId();
     uni.hideLoading();
 })
-
+const goto = () => {
+    uni.navigateTo({
+        url: "/pages/index/create-pic"
+    })
+}
 const getRandom = async () => {
     getFailed.value = false;
     let data = {
         accessId: "OPEN"
     }
-    // try {
-    const res = await random(data);
-    randomId.value = res.data;
-    getApp().globalData.randomId = randomId.value || "aa";
-    console.log(res, "RRRRRRRRR")
-    // uni.setStorageSync("random", res.data)
-    // } catch (err) {
-    //     console.log(err, "eeeeeeeeeeeeeeeeeeeeeeee")
-    //     getFailed.value = true;
-    //     uni.showToast({
-    //         title: err,
-    //         icon: 'none',
-    //         duration: 2000
-    //     });
-    //     console.error('getRandom error', err);
-    // }
+    try {
+        const res = await random(data);
+        randomId.value = res.data;
+        getApp().globalData.randomId = randomId.value || "aa";
+        console.log(res, "RRRRRRRRR")
+        uni.setStorageSync("random", res.data)
+    } catch (err) {
+        console.log(err, "eeeeeeeeeeeeeeeeeeeeeeee")
+        getFailed.value = true;
+        uni.showToast({
+            title: err,
+            icon: 'none',
+            duration: 2000
+        });
+        console.error('getRandom error', err);
+    }
 }
 const getOrderId = async () => {
     getOrderFailed.value = false;

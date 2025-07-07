@@ -24,8 +24,8 @@ const _sfc_main = {
     const getOrderFailed = common_vendor.ref(false);
     const { resultUrl, imageUrl } = common_vendor.toRefs(model);
     common_vendor.onBeforeMount(async () => {
-      common_vendor.index.__f__("log", "at pages/index/login.vue:45", "BBBBBBBBBBBBBBB");
-      common_vendor.index.__f__("log", "at pages/index/login.vue:46", getApp().globalData.token, "##########");
+      common_vendor.index.__f__("log", "at pages/index/login.vue:47", "BBBBBBBBBBBBBBB");
+      common_vendor.index.__f__("log", "at pages/index/login.vue:48", getApp().globalData.token, "##########");
       common_vendor.index.showLoading({ title: "获取数据中...", mask: true });
       await getRandom();
       await getOrderId();
@@ -36,10 +36,22 @@ const _sfc_main = {
       let data = {
         accessId: "OPEN"
       };
-      const res = await api_index.random(data);
-      randomId.value = res.data;
-      getApp().globalData.randomId = randomId.value || "aa";
-      common_vendor.index.__f__("log", "at pages/index/login.vue:62", res, "RRRRRRRRR");
+      try {
+        const res = await api_index.random(data);
+        randomId.value = res.data;
+        getApp().globalData.randomId = randomId.value || "aa";
+        common_vendor.index.__f__("log", "at pages/index/login.vue:68", res, "RRRRRRRRR");
+        common_vendor.index.setStorageSync("random", res.data);
+      } catch (err) {
+        common_vendor.index.__f__("log", "at pages/index/login.vue:71", err, "eeeeeeeeeeeeeeeeeeeeeeee");
+        getFailed.value = true;
+        common_vendor.index.showToast({
+          title: err,
+          icon: "none",
+          duration: 2e3
+        });
+        common_vendor.index.__f__("error", "at pages/index/login.vue:78", "getRandom error", err);
+      }
     };
     const getOrderId = async () => {
       getOrderFailed.value = false;
@@ -51,9 +63,9 @@ const _sfc_main = {
         const res = await api_index.orderId(data);
         orderSubId.value = res.data.orderSubId;
         getApp().globalData.orderSubId = orderSubId.value || "CC";
-        common_vendor.index.__f__("log", "at pages/index/login.vue:86", orderSubId.value, "orderSubId");
+        common_vendor.index.__f__("log", "at pages/index/login.vue:92", orderSubId.value, "orderSubId");
       } catch (err) {
-        common_vendor.index.__f__("error", "at pages/index/login.vue:88", "getOrderId error", err);
+        common_vendor.index.__f__("error", "at pages/index/login.vue:94", "getOrderId error", err);
         getOrderFailed.value = true;
         common_vendor.index.showToast({
           title: err,
@@ -79,7 +91,7 @@ const _sfc_main = {
               model.imageUrl = compressRes.tempFilePath;
             },
             fail: (err) => {
-              common_vendor.index.__f__("error", "at pages/index/login.vue:116", "图片压缩失败：", err);
+              common_vendor.index.__f__("error", "at pages/index/login.vue:122", "图片压缩失败：", err);
             },
             complete: () => {
               common_vendor.index.hideLoading();
@@ -99,7 +111,7 @@ const _sfc_main = {
         id: (/* @__PURE__ */ new Date()).getTime(),
         url: e.tempFilePath
       });
-      common_vendor.index.__f__("log", "at pages/index/login.vue:167", e.tempFilePath, "TTTTTTTTTTT");
+      common_vendor.index.__f__("log", "at pages/index/login.vue:173", e.tempFilePath, "TTTTTTTTTTT");
       if (!e.tempFilePath) {
         common_vendor.index.showToast({
           title: "未获取到图片路径",
@@ -141,7 +153,7 @@ const _sfc_main = {
               icon: "none",
               duration: 8e3
             });
-            common_vendor.index.__f__("log", "at pages/index/login.vue:215", imgUrl, "imgUrl");
+            common_vendor.index.__f__("log", "at pages/index/login.vue:221", imgUrl, "imgUrl");
             getApp().globalData.imgUrl = imgUrl;
             common_vendor.index.redirectTo({
               url: "/pages/index/confirm?img=" + encodeURIComponent(imgUrl)
@@ -162,7 +174,7 @@ const _sfc_main = {
             duration: 4e3
           });
           common_vendor.index.hideLoading();
-          common_vendor.index.__f__("error", "at pages/index/login.vue:237", "error", error);
+          common_vendor.index.__f__("error", "at pages/index/login.vue:243", "error", error);
         },
         complete: (aaaa) => {
         }

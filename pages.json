@@ -11,10 +11,19 @@
 				"disableScroll": true
 			}
 
+		},
+        {
+			"path": "pages/index/create-pic",
+			"style": {
+				// "navigationBarTitleText": "确认制作",
+				"enablePullDownRefresh": false,
+				"disableScroll": true
+			}
+
 		}
 	],
 	"globalStyle": {
-		// "navigationBarTitleText": "图片裁剪示例",
+		// "navigationBarTitleText": "图片裁剪",
     "navigationBarTextStyle": "black",
     "navigationBarBackgroundColor": "#FFFFFF",
 		"app-plus": {

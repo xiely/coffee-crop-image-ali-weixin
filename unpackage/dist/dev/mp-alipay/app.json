@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/index/login",
-    "pages/index/confirm"
+    "pages/index/confirm",
+    "pages/index/create-pic"
   ],
   "window": {
     "titleBarColor": "#FFFFFF",

@@ -4,6 +4,7 @@ const common_vendor = require("./common/vendor.js");
 if (!Math) {
   "./pages/index/login.js";
   "./pages/index/confirm.js";
+  "./pages/index/create-pic.js";
 }
 const _sfc_main = {
   onLaunch: function(options) {
