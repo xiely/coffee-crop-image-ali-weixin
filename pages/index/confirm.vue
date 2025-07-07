@@ -87,6 +87,7 @@ const submit = () => {
                 .image {
                     width: 400rpx;
                     height: 400rpx;
+                    border-radius: 50%;
                     background-color: #fff;
                     display: block;
                 }
