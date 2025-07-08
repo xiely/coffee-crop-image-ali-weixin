@@ -141,6 +141,7 @@ const _sfc_main = {
             });
             return;
           }
+          common_vendor.index.__f__("log", "at pages/index/login.vue:208", "data", data);
           if (data.success) {
             let imgUrl = "";
             if (!/^https?:\/\//.test(data.data)) {
@@ -153,7 +154,7 @@ const _sfc_main = {
               icon: "none",
               duration: 8e3
             });
-            common_vendor.index.__f__("log", "at pages/index/login.vue:221", imgUrl, "imgUrl");
+            common_vendor.index.__f__("log", "at pages/index/login.vue:222", imgUrl, "imgUrl");
             getApp().globalData.imgUrl = imgUrl;
             common_vendor.index.redirectTo({
               url: "/pages/index/confirm?img=" + encodeURIComponent(imgUrl)
@@ -174,7 +175,7 @@ const _sfc_main = {
             duration: 4e3
           });
           common_vendor.index.hideLoading();
-          common_vendor.index.__f__("error", "at pages/index/login.vue:243", "error", error);
+          common_vendor.index.__f__("error", "at pages/index/login.vue:244", "error", error);
         },
         complete: (aaaa) => {
         }

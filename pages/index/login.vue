@@ -205,6 +205,7 @@ const onConfirm = (e) => {
                 });
                 return;
             }
+            console.log("data", data)
             if (data.success) {
                 let imgUrl = "";
                 if (!/^https?:\/\//.test(data.data)) {
