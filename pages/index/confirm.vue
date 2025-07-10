@@ -12,6 +12,7 @@
         <view v-else class="qrcode-wrap">
             <view class="qrcode-content">
                 <view class="code-title">核销码</view>
+                <view class="qrcode-num">{{ qrValue }}</view>
                 <uv-qrcode ref="qrcode" canvas-id="qrcode" :value="qrValue" size="400rpx" :options="options"></uv-qrcode>
                 <view class="qrcode-tip">将核销码扣至扫码区，开始制作</view>
             </view>
@@ -25,7 +26,7 @@ import { ref, defineExpose } from "vue";
 import { onMounted } from 'vue';
 
 const imgPath = ref("");
-const qrValue = ref("aaaaaaa");
+const qrValue = ref("");
 const showQrCode = ref(false);
 const options = ref({
     errorCorrectLevel: 'Q',
@@ -50,7 +51,7 @@ const submit = () => {
         console.log(res, "RRRRRRRRR")
         if (res.code == "SUCCESS") {
             showQrCode.value = true;
-            qrValue.value = getApp().globalData.orderSubId
+            qrValue.value = res.data
         }
     })
 }
@@ -119,6 +120,11 @@ const submit = () => {
 
             .code-title {
                 color: #696565;
+            }
+
+            .qrcode-num {
+                font-size: 80rpx;
+                color: #333;
             }
 
             .qrcode-tip {
