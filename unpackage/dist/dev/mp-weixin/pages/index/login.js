@@ -153,7 +153,7 @@ const _sfc_main = {
             common_vendor.index.showToast({
               title: "上传成功",
               icon: "none",
-              duration: 8e3
+              duration: 4e3
             });
             common_vendor.index.__f__("log", "at pages/index/login.vue:218", imgUrl, "imgUrl");
             getApp().globalData.imgUrl = imgUrl;

@@ -104,7 +104,7 @@ const submit = () => {
                 .img-wrap {
                     width: 100%;
                     text-align: center;
-                    margin: 20px;
+                    margin-bottom: 14px;
                     display: flex;
                     flex-direction: column;
                     align-items: center;
@@ -129,9 +129,12 @@ const submit = () => {
                 border-radius: 80rpx;
                 margin: 0rpx 20rpx;
                 font-size: 32rpx;
-                font-weight: bold;
                 box-shadow: 0 4rpx 16rpx rgba(255, 107, 107, 0.15);
                 border: none;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 88rpx;
             }
 
         }

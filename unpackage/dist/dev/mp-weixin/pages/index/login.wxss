@@ -64,7 +64,10 @@
   border-radius: 80rpx;
   margin: 80rpx 20rpx;
   font-size: 32rpx;
-  font-weight: bold;
   box-shadow: 0 4rpx 16rpx rgba(255, 107, 107, 0.15);
   border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 88rpx;
 }

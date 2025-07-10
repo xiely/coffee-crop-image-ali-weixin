@@ -213,7 +213,7 @@ const onConfirm = (e) => {
                 uni.showToast({
                     title: "上传成功",
                     icon: "none",
-                    duration: 8000
+                    duration: 4000
                 });
                 console.log(imgUrl, "imgUrl")
                 getApp().globalData.imgUrl = imgUrl
@@ -305,9 +305,12 @@ const prviewImgae = (index, url) => {
             border-radius: 80rpx;
             margin: 80rpx 20rpx;
             font-size: 32rpx;
-            font-weight: bold;
             box-shadow: 0 4rpx 16rpx rgba(255, 107, 107, 0.15);
             border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 88rpx;
         }
     }
 
