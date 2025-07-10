@@ -1,6 +1,7 @@
 
 <template>
-  <view>
+  <view class="main">
+    <image class="bg-img" src="/static/image/bg.png" mode="aspectFill"></image>
     <t-cropper
       mode="ratio"
       :imageUrl="imageUrl"
@@ -11,16 +12,11 @@
       @cancel="onCancel"
       @confirm="onConfirm"
     ></t-cropper>
-    <!-- <view class="preview">
-      <image
-        v-for="(item, index) in resultUrl"
-        :key="item.id"
-        class="images"
-        @click="prviewImgae(index, item.url)"
-        :src="item.url"
-      />
-    </view> -->
-    <button class="button" type="primary" @click="selectFile">选择图片</button>
+   <view class="content-wrap">
+        <view class="logo-title">咖啡灵感工坊</view>
+        <view class="logo-description">用创意点亮你的专属咖啡时光</view>
+        <button class="button" type="primary" @click="selectFile">上传印花图</button>
+   </view>
 
      <!-- <button class="button" type="primary" @click="goto">测试</button> -->
   </view>
@@ -264,17 +260,64 @@ const prviewImgae = (index, url) => {
 </script>
 
 <style lang="scss" scoped>
-.preview {
-    padding: 32rpx;
+.main {
+    position: relative;
+    min-height: 100vh;
+    width: 100vw;
+    overflow: hidden;
 
-    .images {
-        margin: 10rpx;
-        width: 200rpx;
-        height: 200rpx;
+    .bg-img {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 0;
     }
+
+    .content-wrap {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        bottom: 60vh;
+        text-align: center;
+
+        .logo-title {
+            color: #fff;
+
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+
+        .logo-description {
+            margin-top: 10px;
+            color: #fff;
+        }
+
+        .button {
+            position: absolute;
+            left: 0;
+            right: 0;
+            background: linear-gradient(90deg, #FF6B6B 0%, #e9c8a4 100%);
+            color: #fff;
+            padding: 10rpx;
+            border-radius: 80rpx;
+            margin: 80rpx 20rpx;
+            font-size: 32rpx;
+            font-weight: bold;
+            box-shadow: 0 4rpx 16rpx rgba(255, 107, 107, 0.15);
+            border: none;
+        }
+    }
+
+
 }
 
-.button {
-    margin: 80rpx 20rpx;
-}
-</style>
+
+
+// .t-cropper,
+// .button {
+//     position: relative;
+//     z-index: 1;
+// }</style>

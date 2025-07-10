@@ -744,7 +744,7 @@ const _sfc_main = {
         y: common_vendor.o(onCancle),
         z: props.isRotateBtn && props.mode !== "free"
       }, props.isRotateBtn && props.mode !== "free" ? {
-        A: common_assets._imports_0,
+        A: common_assets._imports_0$1,
         B: common_vendor.o(onAngle)
       } : {}, {
         C: common_vendor.o((...args) => common_vendor.unref(onConfirm) && common_vendor.unref(onConfirm)(...args)),
