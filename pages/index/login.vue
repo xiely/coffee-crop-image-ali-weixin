@@ -10,13 +10,13 @@
       :radius="300"
       :delay="150"
       @cancel="onCancel"
-      @confirm="onConfirm"
-    ></t-cropper>
-   <view class="content-wrap">
+      @confirm="onConfirm">
+    </t-cropper>
+    <view class="content-wrap">
         <view class="logo-title">咖啡灵感工坊</view>
         <view class="logo-description">用创意点亮你的专属咖啡时光</view>
         <button class="button" type="primary" @click="selectFile">上传印花图</button>
-   </view>
+    </view>
 
      <!-- <button class="button" type="primary" @click="goto">测试</button> -->
   </view>
@@ -25,33 +25,33 @@
 <script setup>
 import { checkCode, random, orderId } from '../../api'
 import { onBeforeMount, reactive, toRefs, ref } from "vue";
+
+const app = getApp();
 const model = reactive({
     imageUrl: "",
     resultUrl: [],
 });
-const token = ref();
-const code = ref("");
 const randomId = ref();
 const orderSubId = ref();
 const getFailed = ref(false);
 const getOrderFailed = ref(false)
-
 const { resultUrl, imageUrl } = toRefs(model);
-
 
 onBeforeMount(async () => {
     console.log("BBBBBBBBBBBBBBB")
-    console.log(getApp().globalData.token, "##########")
+    console.log(app.globalData.token, "##########")
     uni.showLoading({ title: '获取数据中...', mask: true });
     await getRandom();
     await getOrderId();
     uni.hideLoading();
 })
+
 const goto = () => {
     uni.navigateTo({
         url: "/pages/index/create-pic"
     })
 }
+
 const getRandom = async () => {
     getFailed.value = false;
     let data = {
@@ -60,7 +60,7 @@ const getRandom = async () => {
     try {
         const res = await random(data);
         randomId.value = res.data;
-        getApp().globalData.randomId = randomId.value || "aa";
+        app.globalData.randomId = randomId.value || "aa";
         console.log(res, "RRRRRRRRR")
         uni.setStorageSync("random", res.data)
     } catch (err) {
@@ -74,17 +74,18 @@ const getRandom = async () => {
         console.error('getRandom error', err);
     }
 }
+
 const getOrderId = async () => {
     getOrderFailed.value = false;
     let data = {
-        snToken: getApp().globalData.token,
-        randomId: getApp().globalData.randomId
+        snToken: app.globalData.token,
+        randomId: app.globalData.randomId
     }
     try {
         const res = await orderId(data);
         orderSubId.value = res.data.orderSubId;
 
-        getApp().globalData.orderSubId = orderSubId.value || "CC";
+        app.globalData.orderSubId = orderSubId.value || "CC";
         console.log(orderSubId.value, "orderSubId")
     } catch (err) {
         console.error('getOrderId error', err);
@@ -216,7 +217,7 @@ const onConfirm = (e) => {
                     duration: 4000
                 });
                 console.log(imgUrl, "imgUrl")
-                getApp().globalData.imgUrl = imgUrl
+                app.globalData.imgUrl = imgUrl
                 uni.redirectTo({
                     url: '/pages/index/confirm?img=' + encodeURIComponent(imgUrl)
                 });
@@ -316,11 +317,4 @@ const prviewImgae = (index, url) => {
 
 
 }
-
-
-
-// .t-cropper,
-// .button {
-//     position: relative;
-//     z-index: 1;
-// }</style>
+</style>

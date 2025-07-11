@@ -13,20 +13,19 @@ if (!Math) {
 const _sfc_main = {
   __name: "login",
   setup(__props) {
+    const app = getApp();
     const model = common_vendor.reactive({
       imageUrl: "",
       resultUrl: []
     });
-    common_vendor.ref();
-    common_vendor.ref("");
     const randomId = common_vendor.ref();
     const orderSubId = common_vendor.ref();
     const getFailed = common_vendor.ref(false);
     const getOrderFailed = common_vendor.ref(false);
     const { resultUrl, imageUrl } = common_vendor.toRefs(model);
     common_vendor.onBeforeMount(async () => {
-      common_vendor.index.__f__("log", "at pages/index/login.vue:43", "BBBBBBBBBBBBBBB");
-      common_vendor.index.__f__("log", "at pages/index/login.vue:44", getApp().globalData.token, "##########");
+      common_vendor.index.__f__("log", "at pages/index/login.vue:41", "BBBBBBBBBBBBBBB");
+      common_vendor.index.__f__("log", "at pages/index/login.vue:42", app.globalData.token, "##########");
       common_vendor.index.showLoading({ title: "获取数据中...", mask: true });
       await getRandom();
       await getOrderId();
@@ -40,7 +39,7 @@ const _sfc_main = {
       try {
         const res = await api_index.random(data);
         randomId.value = res.data;
-        getApp().globalData.randomId = randomId.value || "aa";
+        app.globalData.randomId = randomId.value || "aa";
         common_vendor.index.__f__("log", "at pages/index/login.vue:64", res, "RRRRRRRRR");
         common_vendor.index.setStorageSync("random", res.data);
       } catch (err) {
@@ -57,16 +56,16 @@ const _sfc_main = {
     const getOrderId = async () => {
       getOrderFailed.value = false;
       let data = {
-        snToken: getApp().globalData.token,
-        randomId: getApp().globalData.randomId
+        snToken: app.globalData.token,
+        randomId: app.globalData.randomId
       };
       try {
         const res = await api_index.orderId(data);
         orderSubId.value = res.data.orderSubId;
-        getApp().globalData.orderSubId = orderSubId.value || "CC";
-        common_vendor.index.__f__("log", "at pages/index/login.vue:88", orderSubId.value, "orderSubId");
+        app.globalData.orderSubId = orderSubId.value || "CC";
+        common_vendor.index.__f__("log", "at pages/index/login.vue:89", orderSubId.value, "orderSubId");
       } catch (err) {
-        common_vendor.index.__f__("error", "at pages/index/login.vue:90", "getOrderId error", err);
+        common_vendor.index.__f__("error", "at pages/index/login.vue:91", "getOrderId error", err);
         getOrderFailed.value = true;
         common_vendor.index.showToast({
           title: err,
@@ -92,7 +91,7 @@ const _sfc_main = {
               model.imageUrl = compressRes.tempFilePath;
             },
             fail: (err) => {
-              common_vendor.index.__f__("error", "at pages/index/login.vue:118", "图片压缩失败：", err);
+              common_vendor.index.__f__("error", "at pages/index/login.vue:119", "图片压缩失败：", err);
             },
             complete: () => {
               common_vendor.index.hideLoading();
@@ -112,7 +111,7 @@ const _sfc_main = {
         id: (/* @__PURE__ */ new Date()).getTime(),
         url: e.tempFilePath
       });
-      common_vendor.index.__f__("log", "at pages/index/login.vue:169", e.tempFilePath, "TTTTTTTTTTT");
+      common_vendor.index.__f__("log", "at pages/index/login.vue:170", e.tempFilePath, "TTTTTTTTTTT");
       if (!e.tempFilePath) {
         common_vendor.index.showToast({
           title: "未获取到图片路径",
@@ -142,7 +141,7 @@ const _sfc_main = {
             });
             return;
           }
-          common_vendor.index.__f__("log", "at pages/index/login.vue:204", "data", data);
+          common_vendor.index.__f__("log", "at pages/index/login.vue:205", "data", data);
           if (data.success) {
             let imgUrl = "";
             if (!/^https?:\/\//.test(data.data)) {
@@ -155,8 +154,8 @@ const _sfc_main = {
               icon: "none",
               duration: 4e3
             });
-            common_vendor.index.__f__("log", "at pages/index/login.vue:218", imgUrl, "imgUrl");
-            getApp().globalData.imgUrl = imgUrl;
+            common_vendor.index.__f__("log", "at pages/index/login.vue:219", imgUrl, "imgUrl");
+            app.globalData.imgUrl = imgUrl;
             common_vendor.index.redirectTo({
               url: "/pages/index/confirm?img=" + encodeURIComponent(imgUrl)
             });
@@ -176,7 +175,7 @@ const _sfc_main = {
             duration: 4e3
           });
           common_vendor.index.hideLoading();
-          common_vendor.index.__f__("error", "at pages/index/login.vue:240", "error", error);
+          common_vendor.index.__f__("error", "at pages/index/login.vue:241", "error", error);
         },
         complete: (aaaa) => {
         }

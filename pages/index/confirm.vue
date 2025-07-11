@@ -33,6 +33,7 @@ import { flowerSet } from '../../api'
 import { ref } from "vue";
 import { onMounted } from 'vue';
 
+const app = getApp();
 const imgPath = ref("");
 const qrValue = ref("");
 const showQrCode = ref(false);
@@ -44,14 +45,14 @@ const options = ref({
 })
 
 onMounted(() => {
-    imgPath.value = getApp().globalData.imgUrl
+    imgPath.value = app.globalData.imgUrl
 })
 
 const submit = () => {
     let data = {
-        snToken: getApp().globalData.token,
-        randomId: getApp().globalData.randomId,
-        orderSubId: getApp().globalData.orderSubId,
+        snToken: app.globalData.token,
+        randomId: app.globalData.randomId,
+        orderSubId: app.globalData.orderSubId,
         flower: imgPath.value
     }
     flowerSet(data).then(res => {
