@@ -13,8 +13,8 @@
             </view>
             <view v-else class="qrcode-wrap">
                 <view class="qrcode-content">
-                    <view class="code-title">核销码</view>
-                    <view class="qrcode-num">{{ qrValue }}</view>
+                    <view class="qrcode-num">{{ app.globalData.orderSubId }}</view>
+                    <!-- <view class="code-title">核销码</view> -->
                     <view class="qrcode-box">
                       <view class="qrcode-border">
                         <uv-qrcode ref="qrcode" canvas-id="qrcode" :value="qrValue" size="400rpx" :options="options"></uv-qrcode>
@@ -36,7 +36,7 @@ import { onMounted } from 'vue';
 const app = getApp();
 const imgPath = ref("");
 const qrValue = ref("");
-const showQrCode = ref(false);
+const showQrCode = ref();
 const options = ref({
     errorCorrectLevel: 'Q',
     margin: 10,
