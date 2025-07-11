@@ -30,11 +30,11 @@
 <script setup>
 import uvQrcode from '@/uni_modules/uv-qrcode/components/uv-qrcode/uv-qrcode.vue';
 import { flowerSet } from '../../api'
-import { ref, defineExpose } from "vue";
+import { ref } from "vue";
 import { onMounted } from 'vue';
 
 const imgPath = ref("");
-const qrValue = ref("aaaaaa");
+const qrValue = ref("");
 const showQrCode = ref(false);
 const options = ref({
     errorCorrectLevel: 'Q',
