@@ -41,9 +41,10 @@
   position: absolute;
   left: 0;
   right: 0;
-  margin: 0 auto;
+  margin: 20rpx auto;
   bottom: 60vh;
   text-align: center;
+  /* 在父组件的样式中 */
 }
 .main .content-wrap .logo-title.data-v-fa14255b {
   color: #fff;
@@ -53,6 +54,42 @@
 .main .content-wrap .logo-description.data-v-fa14255b {
   margin-top: 10px;
   color: #fff;
+}
+.main .content-wrap .code-tip.data-v-fa14255b {
+  margin: 40px 0 0;
+  color: #fff;
+}
+.main .content-wrap .code-input.data-v-fa14255b {
+  margin: 0 20rpx;
+  border-radius: 80rpx;
+}
+.main .content-wrap.data-v-fa14255b  {
+  border-radius: 80rpx !important;
+}
+.main .content-wrap .circle-input.data-v-fa14255b {
+  width: calc(100% - 40rpx);
+  height: 80rpx;
+  background-color: transparent;
+  border: 1px solid #fff;
+  border-radius: 80rpx;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  margin: 10px auto 0;
+  justify-content: center;
+}
+.main .content-wrap .input.data-v-fa14255b {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  color: #fff;
+  font-size: 32rpx;
+  background-color: rgba(255, 255, 255, 0);
+  /* 白色透明 */
+}
+.main .content-wrap .placeholder.data-v-fa14255b {
+  font-size: 20rpx;
+  color: #ccc;
 }
 .main .content-wrap .button.data-v-fa14255b {
   position: absolute;
@@ -70,4 +107,7 @@
   align-items: center;
   justify-content: center;
   height: 88rpx;
+}
+.main .content-wrap .button.confirm-button.data-v-fa14255b {
+  margin-top: 30px;
 }

@@ -15,7 +15,19 @@
     <view class="content-wrap">
         <view class="logo-title">咖啡灵感工坊</view>
         <view class="logo-description">用创意点亮你的专属咖啡时光</view>
-        <button class="button" type="primary" @click="selectFile">上传印花图</button>
+        <view class="code-tip">请输入您的制作码</view>
+        <view v-if="!showUpload">
+            <view  class="circle-input">
+                <input
+                v-model="codeNum"
+                placeholder="例如：8989"
+                placeholder-class="placeholder"
+                class="input"
+                />
+            </view>
+            <button class="button confirm-button" type="primary" >确认</button>
+        </view>
+        <button v-else class="button" type="primary" @click="selectFile">上传印花图</button>
     </view>
 
      <!-- <button class="button" type="primary" @click="goto">测试</button> -->
@@ -31,10 +43,18 @@ const model = reactive({
     imageUrl: "",
     resultUrl: [],
 });
+const styles = {
+    color: "#fff",
+    borderRadius: '50%',
+    borderColor: '#fff',
+    backgroundColor: 'transparent'
+}
 const randomId = ref();
 const orderSubId = ref();
 const getFailed = ref(false);
 const getOrderFailed = ref(false)
+const codeNum = ref("");
+const showUpload = ref(false)
 const { resultUrl, imageUrl } = toRefs(model);
 
 onBeforeMount(async () => {
@@ -130,7 +150,7 @@ const compressImage = () => {
 const defaultCompressImage = () => {
     uni.chooseImage({
         count: 1,
-        sizeType: ["compressed"],
+        izeType: ["compressed"],
         success: (res) => {
             model.imageUrl = res.tempFilePaths[0];
         },
@@ -138,10 +158,10 @@ const defaultCompressImage = () => {
 };
 
 /**
- *** 特别声明：在使用 uni.chooseImage 选择的大图片文件无法直接在 Image 组件中显示，通常涉及到以下可能的问题和限制。
- *** 图片大小和尺寸限制：移动设备和浏览器对于能够加载和处理的图片大小有限制，如果选择的图片文件尺寸过大，可能无法正常加载和显示。
- *** 性能问题：大图片文件可能会导致页面加载缓慢或者卡顿，尤其是在移动设备上。
- *** 内存问题：加载大图片可能会消耗大量的内存资源，特别是在移动设备上，可能导致内存不足或者页面崩溃的问题。
+  ** 特别声明：在使用 uni.chooseImage 选择的大图片文件无法直接在 Image 组件中显示，通常涉及到以下可能的问题和限制。
+ *** 图片大小和尺寸限制：移动设备和浏览器对于能 加载和处理的图片大小有限制， 果选择的图片文件尺寸过大，可能无法正常加载和显示。
+ *** 性能问题：大图片文件可能会导致页 加载缓慢或者卡顿，尤其是在移动设备上。
+ *** 内存问题：加载大图片可能会消耗大量的内存资源，特别是在移动 备上，可能导致内存不足或者页面崩溃的问题。
  *** 解决参考方案如下：
  *** 防止选择大文件图片后无法在Image中直接临时路径显示图片，导致无法在裁剪插件中显示，
  *** 根据项目需要对大尺寸图片进行压缩、对图片质量要求高的，需要提前上传至oss进行采用网络图片进行裁剪。
@@ -280,7 +300,7 @@ const prviewImgae = (index, url) => {
         position: absolute;
         left: 0;
         right: 0;
-        margin: 0 auto;
+        margin: 20rpx auto;
         bottom: 60vh;
         text-align: center;
 
@@ -294,6 +314,53 @@ const prviewImgae = (index, url) => {
         .logo-description {
             margin-top: 10px;
             color: #fff;
+        }
+
+        .code-tip {
+            // font-size: 18px;
+            margin: 40px 0 0;
+            color: #fff;
+        }
+
+        .code-input {
+            margin: 0 20rpx;
+            border-radius: 80rpx;
+        }
+
+        /* 在父组件的样式中 */
+        ::v-deep(.uni-easyinput__content) {
+            border-radius: 80rpx !important;
+        }
+
+        .circle-input {
+            width: calc(100% - 40rpx);
+            height: 80rpx;
+            background-color: transparent;
+            border: 1px solid #fff;
+            border-radius: 80rpx;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            margin: 10px auto 0;
+            justify-content: center;
+        }
+
+        .input {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            color: #fff;
+            font-size: 32rpx;
+            background-color: rgba(255, 255, 255, 0);
+            /* 白色透明 */
+            // background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7');
+            // background-repeat: no-repeat;
+            // background-size: 100% 100%;
+        }
+
+        .placeholder {
+            font-size: 20rpx;
+            color: #ccc;
         }
 
         .button {
@@ -312,6 +379,10 @@ const prviewImgae = (index, url) => {
             align-items: center;
             justify-content: center;
             height: 88rpx;
+
+            &.confirm-button {
+                margin-top: 30px;
+            }
         }
     }
 

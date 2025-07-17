@@ -22,10 +22,12 @@ const _sfc_main = {
     const orderSubId = common_vendor.ref();
     const getFailed = common_vendor.ref(false);
     const getOrderFailed = common_vendor.ref(false);
+    const codeNum = common_vendor.ref("");
+    const showUpload = common_vendor.ref(false);
     const { resultUrl, imageUrl } = common_vendor.toRefs(model);
     common_vendor.onBeforeMount(async () => {
-      common_vendor.index.__f__("log", "at pages/index/login.vue:41", "BBBBBBBBBBBBBBB");
-      common_vendor.index.__f__("log", "at pages/index/login.vue:42", app.globalData.token, "##########");
+      common_vendor.index.__f__("log", "at pages/index/login.vue:61", "BBBBBBBBBBBBBBB");
+      common_vendor.index.__f__("log", "at pages/index/login.vue:62", app.globalData.token, "##########");
       common_vendor.index.showLoading({ title: "获取数据中...", mask: true });
       await getRandom();
       await getOrderId();
@@ -40,17 +42,17 @@ const _sfc_main = {
         const res = await api_index.random(data);
         randomId.value = res.data;
         app.globalData.randomId = randomId.value || "aa";
-        common_vendor.index.__f__("log", "at pages/index/login.vue:64", res, "RRRRRRRRR");
+        common_vendor.index.__f__("log", "at pages/index/login.vue:84", res, "RRRRRRRRR");
         common_vendor.index.setStorageSync("random", res.data);
       } catch (err) {
-        common_vendor.index.__f__("log", "at pages/index/login.vue:67", err, "eeeeeeeeeeeeeeeeeeeeeeee");
+        common_vendor.index.__f__("log", "at pages/index/login.vue:87", err, "eeeeeeeeeeeeeeeeeeeeeeee");
         getFailed.value = true;
         common_vendor.index.showToast({
           title: err,
           icon: "none",
           duration: 2e3
         });
-        common_vendor.index.__f__("error", "at pages/index/login.vue:74", "getRandom error", err);
+        common_vendor.index.__f__("error", "at pages/index/login.vue:94", "getRandom error", err);
       }
     };
     const getOrderId = async () => {
@@ -63,9 +65,9 @@ const _sfc_main = {
         const res = await api_index.orderId(data);
         orderSubId.value = res.data.orderSubId;
         app.globalData.orderSubId = orderSubId.value || "CC";
-        common_vendor.index.__f__("log", "at pages/index/login.vue:89", orderSubId.value, "orderSubId");
+        common_vendor.index.__f__("log", "at pages/index/login.vue:109", orderSubId.value, "orderSubId");
       } catch (err) {
-        common_vendor.index.__f__("error", "at pages/index/login.vue:91", "getOrderId error", err);
+        common_vendor.index.__f__("error", "at pages/index/login.vue:111", "getOrderId error", err);
         getOrderFailed.value = true;
         common_vendor.index.showToast({
           title: err,
@@ -91,7 +93,7 @@ const _sfc_main = {
               model.imageUrl = compressRes.tempFilePath;
             },
             fail: (err) => {
-              common_vendor.index.__f__("error", "at pages/index/login.vue:119", "图片压缩失败：", err);
+              common_vendor.index.__f__("error", "at pages/index/login.vue:139", "图片压缩失败：", err);
             },
             complete: () => {
               common_vendor.index.hideLoading();
@@ -111,7 +113,7 @@ const _sfc_main = {
         id: (/* @__PURE__ */ new Date()).getTime(),
         url: e.tempFilePath
       });
-      common_vendor.index.__f__("log", "at pages/index/login.vue:170", e.tempFilePath, "TTTTTTTTTTT");
+      common_vendor.index.__f__("log", "at pages/index/login.vue:190", e.tempFilePath, "TTTTTTTTTTT");
       if (!e.tempFilePath) {
         common_vendor.index.showToast({
           title: "未获取到图片路径",
@@ -141,7 +143,7 @@ const _sfc_main = {
             });
             return;
           }
-          common_vendor.index.__f__("log", "at pages/index/login.vue:205", "data", data);
+          common_vendor.index.__f__("log", "at pages/index/login.vue:225", "data", data);
           if (data.success) {
             let imgUrl = "";
             if (!/^https?:\/\//.test(data.data)) {
@@ -154,7 +156,7 @@ const _sfc_main = {
               icon: "none",
               duration: 4e3
             });
-            common_vendor.index.__f__("log", "at pages/index/login.vue:219", imgUrl, "imgUrl");
+            common_vendor.index.__f__("log", "at pages/index/login.vue:239", imgUrl, "imgUrl");
             app.globalData.imgUrl = imgUrl;
             common_vendor.index.redirectTo({
               url: "/pages/index/confirm?img=" + encodeURIComponent(imgUrl)
@@ -175,14 +177,14 @@ const _sfc_main = {
             duration: 4e3
           });
           common_vendor.index.hideLoading();
-          common_vendor.index.__f__("error", "at pages/index/login.vue:241", "error", error);
+          common_vendor.index.__f__("error", "at pages/index/login.vue:261", "error", error);
         },
         complete: (aaaa) => {
         }
       });
     };
     return (_ctx, _cache) => {
-      return {
+      return common_vendor.e({
         a: common_assets._imports_0,
         b: common_vendor.o(onCancel),
         c: common_vendor.o(onConfirm),
@@ -194,8 +196,13 @@ const _sfc_main = {
           radius: 300,
           delay: 150
         }),
-        e: common_vendor.o(selectFile)
-      };
+        e: !showUpload.value
+      }, !showUpload.value ? {
+        f: codeNum.value,
+        g: common_vendor.o(($event) => codeNum.value = $event.detail.value)
+      } : {
+        h: common_vendor.o(selectFile)
+      });
     };
   }
 };
