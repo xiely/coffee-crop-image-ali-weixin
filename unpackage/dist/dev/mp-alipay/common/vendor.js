@@ -7495,7 +7495,7 @@ function initOnError() {
 function initRuntimeSocketService() {
   const hosts = "192.168.56.1,192.168.193.2,192.168.108.79,127.0.0.1";
   const port = "8090";
-  const id2 = "mp-alipay_aT_KkK";
+  const id2 = "mp-alipay_-h0LoA";
   const lazy = typeof swan !== "undefined";
   let restoreError = lazy ? () => {
   } : initOnError();

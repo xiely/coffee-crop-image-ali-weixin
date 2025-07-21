@@ -76,6 +76,15 @@ const _sfc_main = {
         });
       }
     };
+    const handleCheckCode = async () => {
+      ({
+        code: codeNum.value
+      });
+      try {
+        showUpload.value = true;
+      } catch (err) {
+      }
+    };
     const compressImage = () => {
       common_vendor.index.chooseImage({
         count: 1,
@@ -93,7 +102,7 @@ const _sfc_main = {
               model.imageUrl = compressRes.tempFilePath;
             },
             fail: (err) => {
-              common_vendor.index.__f__("error", "at pages/index/login.vue:139", "图片压缩失败：", err);
+              common_vendor.index.__f__("error", "at pages/index/login.vue:153", "图片压缩失败：", err);
             },
             complete: () => {
               common_vendor.index.hideLoading();
@@ -113,7 +122,7 @@ const _sfc_main = {
         id: (/* @__PURE__ */ new Date()).getTime(),
         url: e.tempFilePath
       });
-      common_vendor.index.__f__("log", "at pages/index/login.vue:190", e.tempFilePath, "TTTTTTTTTTT");
+      common_vendor.index.__f__("log", "at pages/index/login.vue:204", e.tempFilePath, "TTTTTTTTTTT");
       if (!e.tempFilePath) {
         common_vendor.index.showToast({
           title: "未获取到图片路径",
@@ -143,7 +152,7 @@ const _sfc_main = {
             });
             return;
           }
-          common_vendor.index.__f__("log", "at pages/index/login.vue:225", "data", data);
+          common_vendor.index.__f__("log", "at pages/index/login.vue:239", "data", data);
           if (data.success) {
             let imgUrl = "";
             if (!/^https?:\/\//.test(data.data)) {
@@ -156,7 +165,7 @@ const _sfc_main = {
               icon: "none",
               duration: 4e3
             });
-            common_vendor.index.__f__("log", "at pages/index/login.vue:239", imgUrl, "imgUrl");
+            common_vendor.index.__f__("log", "at pages/index/login.vue:253", imgUrl, "imgUrl");
             app.globalData.imgUrl = imgUrl;
             common_vendor.index.redirectTo({
               url: "/pages/index/confirm?img=" + encodeURIComponent(imgUrl)
@@ -177,7 +186,7 @@ const _sfc_main = {
             duration: 4e3
           });
           common_vendor.index.hideLoading();
-          common_vendor.index.__f__("error", "at pages/index/login.vue:261", "error", error);
+          common_vendor.index.__f__("error", "at pages/index/login.vue:275", "error", error);
         },
         complete: (aaaa) => {
         }
@@ -199,9 +208,10 @@ const _sfc_main = {
         e: !showUpload.value
       }, !showUpload.value ? {
         f: codeNum.value,
-        g: common_vendor.o(($event) => codeNum.value = $event.detail.value)
+        g: common_vendor.o(($event) => codeNum.value = $event.detail.value),
+        h: common_vendor.o(handleCheckCode)
       } : {
-        h: common_vendor.o(selectFile)
+        i: common_vendor.o(selectFile)
       });
     };
   }

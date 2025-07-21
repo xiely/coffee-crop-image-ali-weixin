@@ -15,8 +15,8 @@
     <view class="content-wrap">
         <view class="logo-title">咖啡灵感工坊</view>
         <view class="logo-description">用创意点亮你的专属咖啡时光</view>
-        <view class="code-tip">请输入您的制作码</view>
         <view v-if="!showUpload">
+            <view class="code-tip">请输入您的制作码</view>
             <view  class="circle-input">
                 <input
                 v-model="codeNum"
@@ -25,7 +25,7 @@
                 class="input"
                 />
             </view>
-            <button class="button confirm-button" type="primary" >确认</button>
+            <button class="button confirm-button" type="primary" @click="handleCheckCode">确认</button>
         </view>
         <button v-else class="button" type="primary" @click="selectFile">上传印花图</button>
     </view>
@@ -58,7 +58,6 @@ const showUpload = ref(false)
 const { resultUrl, imageUrl } = toRefs(model);
 
 onBeforeMount(async () => {
-    console.log("BBBBBBBBBBBBBBB")
     console.log(app.globalData.token, "##########")
     uni.showLoading({ title: '获取数据中...', mask: true });
     await getRandom();
@@ -116,6 +115,20 @@ const getOrderId = async () => {
             duration: 2000
         });
     }
+}
+
+const handleCheckCode = async () => {
+    let data = {
+        code: codeNum.value
+    };
+    try {
+        // const res = await checkCode(data);
+        showUpload.value = true;
+    }
+    catch (err) {
+
+    }
+
 }
 
 // 使用uni.compressImage压缩图片
