@@ -9,6 +9,7 @@
     "allowsBounceVertical": "NO",
     "navigationBarBackgroundColor": "#FFFFFF"
   },
+  "debug": true,
   "subPackageBuildType": "shared",
   "usingComponents": {}
 }

@@ -54,7 +54,7 @@ const orderSubId = ref();
 const getFailed = ref(false);
 const getOrderFailed = ref(false)
 const codeNum = ref("");
-const showUpload = ref(false)
+const showUpload = ref(true)
 const { resultUrl, imageUrl } = toRefs(model);
 
 onBeforeMount(async () => {
